@@ -35,7 +35,7 @@
 
 {{ $posts := slice }}
 {{ if .ctx.Site.Taxonomies.tags }}
-	{{ $tag := .ctx.Params.Translationkey | default .ctx.Params.Title }}
+	{{ $tag := path.Base .ctx.TranslationKey }}
 	{{ $posts = index .ctx.Site.Taxonomies.tags $tag }}
 	{{ $posts = sort $posts ".Params.weight" "desc" }}
 {{ end }}
